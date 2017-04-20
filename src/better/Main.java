@@ -1,6 +1,4 @@
-package better;/**
- * Created by dan on 4/17/17.
- */
+package better;
 
 import javafx.application.Application;
 import javafx.scene.Cursor;
@@ -10,12 +8,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-
     private Tree main;
     private TreeGUI mainGUI;
-
     private double orgX, orgY, mouseOrgX, mouseOrgY;
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -23,10 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-
         main = new Tree();
-
-
         // SAMPLE TREE:
 
         main.root = new Node(5);
@@ -38,7 +30,6 @@ public class Main extends Application {
         main.root.getChildren().get(0).getChildren().get(0).addChild(11);
         main.root.getChildren().get(0).getChildren().get(0).addChild(17);
         main.root.getChildren().get(0).getChildren().get(0).addChild(6);
-
 
         mainGUI = new TreeGUI(main);
 
