@@ -25,9 +25,9 @@ public class Main extends Application {
 
 
         main = new Tree();
-        /*
 
-        SAMLE TREE:
+
+        // SAMPLE TREE:
 
         main.root = new Node(5);
         main.root.addChild(2);
@@ -38,7 +38,7 @@ public class Main extends Application {
         main.root.getChildren().get(0).getChildren().get(0).addChild(11);
         main.root.getChildren().get(0).getChildren().get(0).addChild(17);
         main.root.getChildren().get(0).getChildren().get(0).addChild(6);
-        */
+
 
         mainGUI = new TreeGUI(main);
 
@@ -60,6 +60,14 @@ public class Main extends Application {
             double transformedY = orgY - (mouseOrgY - mouseDragEvent.getY());
             mainGUI.setLayoutX(transformedX);
             mainGUI.setLayoutY(transformedY);
+        });
+
+        mainScene.setOnScroll(scrollEvent -> {
+
+            int delta = (int)scrollEvent.getDeltaY() / 40;
+            mainGUI.setScaleX(mainGUI.getScaleX() + (delta * .2));
+            mainGUI.setScaleY(mainGUI.getScaleY() + (delta * .2));
+
         });
 
         primaryStage.setScene(mainScene);
