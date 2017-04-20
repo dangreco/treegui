@@ -37,10 +37,26 @@ public class NodeCircle extends StackPane {
         // Event Handlers
 
         this.setOnMouseEntered(mouseEvent ->{
-            TreeGUI.highlightNodePath(me);
+            if (getSelectedNode() == null || getSelectedNode() == this)
+                TreeGUI.highlightNodePath(me);
         });
 
         // TODO: Create selected NodeGUI persistence
+
+        this.setOnMouseClicked(mouseEvent -> {
+            if (getSelectedNode() == null){
+                setSelectedNode(this);
+                TreeGUI.highlightNodePath(this.me);
+            } else if (getSelectedNode() == this){
+                setSelectedNode(null);
+                TreeGUI.unhighlightNodePath(this.me);
+            } else {
+                TreeGUI.unhighlightNodePath(getSelectedNode().me);
+                setSelectedNode(this);
+                TreeGUI.highlightNodePath(this.me);
+            }
+        });
+
 
         this.setOnMouseExited(mouseEvent -> {
             if (this != NodeCircle.getSelectedNode())
@@ -49,10 +65,7 @@ public class NodeCircle extends StackPane {
 
     }
 
-    public void highlight()
-    {
-        this.casing.setFill(Color.ORANGE);
-    }
+    public void highlight() { this.casing.setFill(Color.ORANGE); }
 
     public void unhighlight()
     {
@@ -60,6 +73,8 @@ public class NodeCircle extends StackPane {
     }
 
     public static NodeCircle getSelectedNode() { return selectedNode; }
+
+    public static void setSelectedNode(NodeCircle sel){ selectedNode  = sel;}
 
 
 }
