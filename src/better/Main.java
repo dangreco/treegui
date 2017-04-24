@@ -18,9 +18,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        main = new Tree();
+        main = new RandomTree();
         // SAMPLE TREE:
-
+        /*
         main.root = new Node(5);
         main.root.addChild(2);
         main.root.addChild(4);
@@ -30,7 +30,7 @@ public class Main extends Application {
         main.root.getChildren().get(0).getChildren().get(0).addChild(11);
         main.root.getChildren().get(0).getChildren().get(0).addChild(17);
         main.root.getChildren().get(0).getChildren().get(0).addChild(6);
-
+        */
         mainGUI = new TreeGUI(main);
 
         Scene mainScene = new Scene(mainGUI, TreeGUI.PANEWIDTH, TreeGUI.PANEHEIGHT);
