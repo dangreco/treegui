@@ -56,8 +56,11 @@ public class Main extends Application {
         mainScene.setOnScroll(scrollEvent -> {
 
             int delta = (int)scrollEvent.getDeltaY() / 40;
-            mainGUI.setScaleX(mainGUI.getScaleX() + (delta * .2));
-            mainGUI.setScaleY(mainGUI.getScaleY() + (delta * .2));
+
+            if (! ( delta == -1 && mainGUI.getScaleX()  < 0.3) && ! ( delta == 1 && mainGUI.getScaleX() > 7.0) ) {
+                mainGUI.setScaleX(mainGUI.getScaleX() + (delta * .2));
+                mainGUI.setScaleY(mainGUI.getScaleY() + (delta * .2));
+            }
 
         });
 
