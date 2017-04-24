@@ -41,8 +41,6 @@ public class NodeCircle extends StackPane {
                 TreeGUI.highlightNodePath(me);
         });
 
-        // TODO: Create selected NodeGUI persistence
-
         this.setOnMouseClicked(mouseEvent -> {
             if (getSelectedNode() == null){
                 setSelectedNode(this);
@@ -59,7 +57,7 @@ public class NodeCircle extends StackPane {
 
 
         this.setOnMouseExited(mouseEvent -> {
-            if (this != NodeCircle.getSelectedNode())
+            if (getSelectedNode() == null)
                 TreeGUI.unhighlightNodePath(me);
         });
 
